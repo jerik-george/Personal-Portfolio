@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Meyawo main styles -->
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -269,7 +270,7 @@
             <p class="section-subtitle">How can you communicate?</p>
             <h6 class="section-title mb-5">Contact Me</h6>
             <!-- contact form -->
-            <form action="https://formsubmit.co/e7ff05fbe504f9f17ad4d940e7e5e1e4" method="POST" class="contact-form col-md-10 col-lg-8 m-auto">
+            <form class="contact-form col-md-10 col-lg-8 m-auto" id="contact-form">
                 <div class="form-row">
                     <div class="form-group col-sm-6">
                         <input type="text" size="50" class="form-control" placeholder="Your Name" name="name" required>
@@ -316,6 +317,26 @@
     <script src="assets/js/meyawo.js"></script>
     <script src="https://kit.fontawesome.com/1eabde0ef6.js" crossorigin="anonymous"></script>
 
+    <!-- Form JS -->
+    <script>
+        $("#contact-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbyVWcx40oIie-7Mutw8-r9NsnR7r0ks9gtBfo_n7ZPLPphy0U9wdQGEyUlGjugGHN_s/exec",
+                data:$("#contact-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 </body>
 
 </html>
